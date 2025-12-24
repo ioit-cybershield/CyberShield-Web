@@ -182,9 +182,9 @@ const DesktopDropdown = ({
       className="absolute top-full left-0 w-full bg-[#0052CD] text-white shadow-xl overflow-hidden"
       style={{ opacity: 0, visibility: "hidden" }}
     >
-      <div className="w-full h-[1px] bg-white/10" />
+      <div className="w-full h-px bg-white/10" />
 
-      <div className="max-w-[1920px] mx-auto px-6 md:px-10 py-12">
+      <div className="max-w-480 mx-auto px-6 md:px-10 py-12">
         <div ref={innerRef} className="flex gap-20 pl-[5%]">
           {/* Description section */}
           <div className="w-1/4 hidden lg:block">
@@ -197,7 +197,7 @@ const DesktopDropdown = ({
           {/* Links grid */}
           <div className="flex gap-16">
             {config.columns?.map((col, idx) => (
-              <div key={idx} className="min-w-[150px]">
+              <div key={idx} className="min-w-37.5">
                 {col.heading && (
                   <h4 className="text-xs font-bold uppercase tracking-widest text-white/40 mb-6">
                     {col.heading}
@@ -234,7 +234,7 @@ const Logo = () => {
   return (
     <>
       {/* Logo */}
-      <div className="flex-shrink-0 z-50">
+      <div className="shrink-0 z-50">
         <a href="/" aria-label="Home">
           <div className="flex items-center gap-2 text-white">
             {/* Geometric Logo Icon */}
@@ -531,7 +531,7 @@ export default function Navbar() {
         />
 
         {/* Navbar content container */}
-        <div className="w-full max-w-[1920px] mx-auto px-6 md:px-10 flex items-center justify-between relative z-20 text-white">
+        <div className="w-full max-w-480 mx-auto px-6 md:px-10 flex items-center justify-between relative z-20 text-white">
           <Logo />
           <DesktopNavItems activeId={activeId} onItemHover={setActiveId} />
           <DesktopActions />

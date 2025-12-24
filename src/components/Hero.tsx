@@ -97,7 +97,7 @@ export default function LandingPage() {
       {/* --- HERO SECTION --- */}
       <section
         ref={containerRef}
-        className="relative w-full h-[100svh] min-h-[600px] overflow-hidden bg-[#1B1B1C] text-white flex flex-col justify-between"
+        className="relative w-full h-svh min-h-150 overflow-hidden bg-[#1B1B1C] text-white flex flex-col justify-between"
       >
         {/* Background Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -114,12 +114,12 @@ export default function LandingPage() {
               playsInline
             />
             <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent h-[40%]" />
+            <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-transparent h-[40%]" />
           </div>
         </div>
 
         {/* Main Title Area */}
-        <div className="relative z-10 w-full px-6 md:px-12 pt-24 md:pt-32 flex-grow flex flex-col justify-center items-start font-hero">
+        <div className="relative z-10 w-full px-6 md:px-12 pt-24 md:pt-32 grow flex flex-col justify-center items-start font-hero">
           <h1 className="font-bold leading-[0.8] uppercase tracking-[-0.04em] text-[clamp(3.5rem,10vw,11rem)] flex flex-col items-start select-none">
             <div className="overflow-hidden relative block">
               <span className="title-mask-inner block translate-y-full">
@@ -180,7 +180,7 @@ const CTAButton = ({ text, href }: { text: string; href: string }) => {
   return (
     <a
       href={href}
-      className="group relative overflow-hidden inline-flex items-center justify-between px-6 py-4 md:px-8 md:py-3 border border-[#F1EFE5] rounded text-sm md:text-base uppercase tracking-tight transition-colors duration-300 hover:text-black hover:border-transparent min-w-[220px] w-full md:w-auto"
+      className="group relative overflow-hidden inline-flex items-center justify-between px-6 py-4 md:px-8 md:py-3 border border-[#F1EFE5] rounded text-sm md:text-base uppercase tracking-tight transition-colors duration-300 hover:text-black hover:border-transparent min-w-55 w-full md:w-auto"
     >
       <span className="absolute inset-0 bg-[#F1EFE5] transform origin-top-left scale-0 group-hover:scale-100 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
       <span className="relative z-10 font-medium">{text}</span>
