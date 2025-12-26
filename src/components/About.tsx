@@ -161,20 +161,27 @@ const AboutSection = () => {
         </div>
 
         {/* --- Heavy Numbers (Timeline) --- */}
-        {/* Mobile fix: Uses vw units to ensure it never overflows horizontally */}
-        <div className="heavy-numbers-container relative w-full h-[20vh] md:h-[60vh] flex flex-col md:flex-row items-center justify-center md:justify-between pointer-events-none select-none overflow-hidden my-12 md:my-24">
-          <div className="heavy-number-left w-full md:w-1/2 flex justify-center md:justify-start md:pl-[5%]">
+        {/* FIX APPLIED: Changed to flex-row for mobile alignment, added gap for desktop spacing, removed justify-between */}
+        <div className="heavy-numbers-container relative w-full h-[20vh] md:h-[60vh] flex flex-row items-center justify-center gap-2 md:gap-8 pointer-events-none select-none overflow-hidden my-12 md:my-24">
+          {/* NEW TAG: Est. Since */}
+          {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
+            <div className="bg-[#f9a90d] text-white text-[10px] md:text-xs font-bold px-3 py-1 uppercase tracking-widest rounded-full shadow-lg">
+              Est. Since
+            </div>
+          </div> */}
+
+          <div className="heavy-number-left">
             <span
-              className="text-[35vw] md:text-[25rem] lg:text-[30rem] leading-none font-bold text-transparent"
+              className="text-[22vw] md:text-[25rem] lg:text-[30rem] leading-none font-bold text-transparent"
               style={{ WebkitTextStroke: "1px #e49700" }}
             >
               20
             </span>
           </div>
 
-          <div className="heavy-number-right w-full md:w-1/2 flex justify-center md:justify-end md:pr-[5%] -mt-10 md:mt-0">
+          <div className="heavy-number-right">
             <span
-              className="text-[35vw] md:text-[25rem] lg:text-[30rem] leading-none font-bold text-transparent"
+              className="text-[22vw] md:text-[25rem] lg:text-[30rem] leading-none font-bold text-transparent"
               style={{ WebkitTextStroke: "1px #e49700" }}
             >
               23
