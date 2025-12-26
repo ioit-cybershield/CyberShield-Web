@@ -52,6 +52,7 @@ export default function LandingPage() {
           gsap.to(bgMediaRef.current, {
             scrollTrigger: {
               trigger: containerRef.current,
+              scroller: document.documentElement,
               start: "top top",
               end: "bottom top",
               scrub: true,

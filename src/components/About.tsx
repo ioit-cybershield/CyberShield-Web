@@ -28,6 +28,7 @@ const AboutSection = () => {
               ease: "power2.out", // Softer easing
               scrollTrigger: {
                 trigger: el,
+                scroller: document.documentElement,
                 start: "top 85%", // Triggers slightly later for editorial pacing
                 toggleActions: "play none none reverse",
               },
@@ -47,6 +48,7 @@ const AboutSection = () => {
               ease: "none",
               scrollTrigger: {
                 trigger: ".heavy-numbers-container",
+                scroller: document.documentElement,
                 start: "top bottom",
                 end: "bottom top",
                 scrub: 1,
@@ -62,6 +64,7 @@ const AboutSection = () => {
               ease: "none",
               scrollTrigger: {
                 trigger: ".heavy-numbers-container",
+                scroller: document.documentElement,
                 start: "top bottom",
                 end: "bottom top",
                 scrub: 1,
@@ -87,6 +90,7 @@ const AboutSection = () => {
               ease: "none",
               scrollTrigger: {
                 trigger: wrapper,
+                scroller: document.documentElement,
                 start: "top bottom",
                 end: "bottom top",
                 scrub: true,
