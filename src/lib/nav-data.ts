@@ -12,37 +12,33 @@ export type NavItemConfig = {
 
 export const navData: NavItemConfig[] = [
   {
-    id: "markets",
-    label: "Markets",
-    href: "/markets",
+    id: "events",
+    label: "Events",
+    href: "/events",
     type: "mega",
     columns: [
       {
-        heading: "Industries",
+        heading: "Past Events",
         links: [
           {
-            label: "Telecom",
-            href: "/telecom",
-            description: "Powering connectivity",
+            label: "event details",
+            href: "/events/past",
+            description: "past events",
           },
           {
-            label: "Utilities",
-            href: "/utilities",
-            description: "Grid support systems",
+            label: "Gallery",
+            href: "/events/gallery",
+            description: "photos and videos",
           },
-          {
-            label: "EV Charging",
-            href: "/ev",
-            description: "Off-grid charging",
-          },
+          
         ],
       },
       {
-        heading: "Regions",
+        heading: "Future events",
         links: [
-          { label: "North America", href: "/na" },
-          { label: "EMEA", href: "/emea" },
-          { label: "APAC", href: "/apac" },
+          { label: "event details", href: "/events/future" },
+          { label: "Register", href: "/events/register" },
+          
         ],
       },
     ],

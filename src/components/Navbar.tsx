@@ -28,46 +28,43 @@ interface NavItem {
 // --- DATA ---
 const NAV_DATA: NavItem[] = [
   {
-    id: "markets",
-    label: "Markets",
+    id: "events",
+    label: "Events",
     type: "mega",
     columns: [
       {
-        heading: "Core Industries",
+        heading: "Past Events",
         links: [
-          { label: "Telecom", href: "/telecom" },
-          { label: "Utilities", href: "/utilities" },
-          { label: "EV Charging", href: "/ev" },
+          { label: "event details", href: "/events/past" },
+          { label: "Gallery", href: "/events/gallery" },
         ],
       },
       {
-        heading: "Global Reach",
+        heading: "Future events",
         links: [
-          { label: "North America", href: "/na" },
-          { label: "Europe & MEA", href: "/emea" },
-          { label: "Asia Pacific", href: "/apac" },
+          { label: "event details", href: "/events/future" },
+          { label: "Register", href: "/events/register" },
         ],
       },
     ],
   },
   {
-    id: "company",
-    label: "Company",
+    id: "gallery",
+    label: "Gallery",
     type: "dropdown",
     columns: [
       {
-        heading: "Company",
+        heading: "Gallery",
         links: [
-          { label: "About Us", href: "/about" },
-          { label: "Sustainability", href: "/sustainability" },
-          { label: "Careers", href: "/careers" },
-          { label: "Newsroom", href: "/news" },
+          { label: "Workshop", href: "/workshop" },
+          { label: "Web dev", href: "/webdev" },
+          { label: "CTF", href: "/CTF" },
         ],
       },
     ],
   },
-  { id: "products", label: "Products", href: "/products", type: "simple" },
-  { id: "technology", label: "Technology", href: "/tech", type: "simple" },
+  { id: "Team", label: "Team", href: "/team", type: "simple" },
+  { id: "About us", label: "About us", href: "/about", type: "simple" },
 ];
 
 export default function Navbar() {
