@@ -199,7 +199,7 @@ const AboutSection = () => {
           3. Added negative margin (-ml-2 md:-ml-8) to the second number to pull them together.
           4. Added tracking-tighter to reduce space between glyphs.
       */}
-      <div className="heavy-numbers-container relative w-full h-[30vh] md:h-[50vh] flex flex-row items-center justify-center gap-2 md:gap-11 pointer-events-none select-none overflow-hidden my-12 md:my-24 opacity-80">
+      <div className="heavy-numbers-container relative w-full h-[30vh] md:h-[50vh] flex flex-row items-center justify-center gap-2 md:gap-11 pointer-events-none select-none overflow-hidden my-6 md:my-12 opacity-80">
         <div className="heavy-number-left z-10">
           <span
             className="text-[30vw] md:text-[25rem] leading-none font-bold text-transparent tracking-tighter"
