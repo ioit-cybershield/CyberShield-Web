@@ -27,6 +27,7 @@ interface NavItem {
 
 // --- DATA ---
 const NAV_DATA: NavItem[] = [
+  { id: "Home", label: "Home", href: "/home", type: "simple" },
   {
     id: "events",
     label: "Events",
@@ -63,8 +64,21 @@ const NAV_DATA: NavItem[] = [
       },
     ],
   },
-  { id: "Team", label: "Team", href: "/team", type: "simple" },
-  { id: "About us", label: "About us", href: "/about", type: "simple" },
+  {
+    id: "About Us",
+    label: "About Us",
+    type: "dropdown",
+    columns: [
+      {
+        heading: "About Us",
+        links: [
+          { label: "Team", href: "/team" },
+          { label: "About us", href: "/about" },
+          
+        ],
+      },
+    ],
+  },
 ];
 
 export default function Navbar() {
