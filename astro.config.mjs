@@ -10,9 +10,7 @@ export default defineConfig({
   site: "https://ioit-cybershield.github.io",
   base: "/",
   integrations: [react()],
-  build: {
-    assetsPrefix: "./",
-  },
+
   vite: {
     plugins: [tailwindcss()],
   },
