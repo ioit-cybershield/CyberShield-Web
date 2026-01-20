@@ -15,7 +15,7 @@ on:
       - dev
 
 permissions:
-  contents: write # needed to push to the preview repo
+  contents: write # needed for comments in this repo
   pull-requests: write # to comment preview URLs on PRs
 
 concurrency:
@@ -45,6 +45,9 @@ jobs:
       - name: Publish branch/PR preview
         uses: rajyan/preview-pages@v1
         with:
+          # Use PAT stored as a secret
+          token: ${{ secrets.PREVIEWS_TOKEN }}
+
           # Astro builds to `dist` by default
           source-dir: dist
 
