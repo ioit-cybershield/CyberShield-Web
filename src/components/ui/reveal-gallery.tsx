@@ -133,7 +133,7 @@ export default function RevealGallery({ items }: Props) {
 
   return (
     <section
-      className="w-full bg-white text-zinc-900 py-12 px-6 md:px-12 relative"
+      className="w-full bg-white text-zinc-900 py-12 px-6 md:px-12 relative -mt-0.5"
       style={{ fontFamily: "Haffer VF, Arial, sans-serif" }}
     >
       <div className="max-w-7xl mx-auto">

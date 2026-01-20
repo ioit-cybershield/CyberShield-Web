@@ -132,7 +132,7 @@ export default function TimelineSpinnerSection() {
       // CHANGE: Removed h-[500vh]. The ScrollTrigger 'end' handles the distance.
       // CHANGE: Added h-screen to make the section fill the viewport while pinned.
       // CHANGE: Added 'relative z-10' to ensure proper stacking over white body background.
-      className="relative z-10 min-h-screen w-full bg-[#e5ded6] text-[#241e1e] overflow-hidden transform-gpu will-change-transform -mt-0.5"
+      className="relative z-10 min-h-screen w-full bg-[#e5ded6] text-[#241e1e] overflow-hidden transform-gpu will-change-transform"
       // style={{
       //   transform: "translateZ(0)",
       //   backfaceVisibility: "hidden",

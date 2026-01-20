@@ -106,7 +106,7 @@ const AboutSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-white text-[#151313] antialiased overflow-hidden selection:bg-black selection:text-white -mt-0.5"
+      className="relative w-full bg-white text-[#151313] antialiased overflow-hidden selection:bg-black selection:text-white"
       style={{ fontFamily: "Haffer VF, Arial, sans-serif" }}
     >
       {/* --- OSMO REPLICA SECTION --- */}
