@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TIMELINE_STATES } from "@/content/timeline";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,26 +11,7 @@ const SPINNER_PATH_1 =
 const SPINNER_PATH_2 =
   "M838.86 0v54.992m.232 1563.438v61.77M253.298 235.486l38.885 38.884M1382.3 1400.55l43.68 43.68m14.34-1189.551-38.89 38.885M290.82 1391.86l-43.683 43.68M0 839.137h54.992m1564.998-.232h61.78";
 
-const STATES = [
-  {
-    label: "Past",
-    titleLines: ["ad optio nihil", "illo! Cumque eaque"],
-    desc: "accusantium repellendus, nihil.",
-  },
-  {
-    label: "Today",
-    titleLines: ["Lorem ipsum", "dolor sit amet"],
-    desc: "Lorem ipsum magnam at quasi facilis.",
-  },
-  {
-    label: "Future",
-    titleLines: [
-      "consectetur adipisicing elit",
-      "Nesciunt, assumenda quaerat impedit",
-    ],
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, tenetur!",
-  },
-];
+const STATES = TIMELINE_STATES;
 
 export default function TimelineSpinnerSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null);

@@ -3,69 +3,10 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import AnimatedButton from "./ui/animated-button";
-
-// --- TYPES ---
-type NavItemType = "mega" | "dropdown" | "simple";
-
-interface NavLink {
-  label: string;
-  href: string;
-}
-
-interface NavColumn {
-  heading?: string;
-  links: NavLink[];
-}
-
-interface NavItem {
-  id: string;
-  label: string;
-  href?: string;
-  type: NavItemType;
-  columns?: NavColumn[];
-}
+import { NAV_ITEMS } from "@/content/nav";
 
 // --- DATA ---
-const NAV_DATA: NavItem[] = [
-  {
-    id: "events",
-    label: "Events",
-    type: "mega",
-    columns: [
-      {
-        heading: "Past Events",
-        links: [
-          { label: "Event Details", href: "/events/past" },
-          { label: "Gallery", href: "/events/gallery" },
-        ],
-      },
-      {
-        heading: "Future events",
-        links: [
-          { label: "Event Details", href: "/events/future" },
-          { label: "Register", href: "/events/register" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "gallery",
-    label: "Gallery",
-    type: "dropdown",
-    columns: [
-      {
-        heading: "Gallery",
-        links: [
-          { label: "Workshop", href: "/workshop" },
-          { label: "Web dev", href: "/webdev" },
-          { label: "CTF", href: "/CTF" },
-        ],
-      },
-    ],
-  },
-  { id: "Team", label: "Team", href: "/team", type: "simple" },
-  { id: "About us", label: "About us", href: "/about", type: "simple" },
-];
+const NAV_DATA = NAV_ITEMS;
 
 export default function Navbar() {
   const [activeId, setActiveId] = useState<string | null>(null);
