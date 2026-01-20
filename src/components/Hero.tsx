@@ -85,7 +85,7 @@ export default function LandingPage() {
           >
             <video
               className="absolute inset-0 h-full w-full object-cover"
-              src="https://www.gencellenergy.com/wp-content/uploads/2023/08/GENCELL-VIDEO-HEADER-4-HOME.mp4"
+              src="/assets/background.mp4"
               autoPlay
               muted
               loop
