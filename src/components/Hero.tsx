@@ -153,11 +153,20 @@ function CTAButton({ text, href }: { text: string; href: string }) {
   return (
     <a
       href={href}
-      className="group relative inline-flex min-w-55 w-full items-center justify-between overflow-hidden rounded border border-[#F1EFE5] px-6 py-4 text-sm uppercase tracking-tight transition-colors duration-300 hover:border-transparent hover:text-black md:w-auto md:px-8 md:py-3 md:text-base"
+      // Changes made below:
+      // 1. Added 'gap-4' to create breathing room between text and arrow
+      // 2. Changed 'min-w-55' to 'min-w-[14rem]' (or 'min-w-56') as '55' is not a standard Tailwind value
+      className="group relative inline-flex w-full min-w-[14rem] items-center justify-between gap-4 overflow-hidden rounded border border-[#F1EFE5] px-6 py-4 text-sm uppercase tracking-tight transition-colors duration-300 hover:border-transparent hover:text-black md:w-auto md:px-8 md:py-3 md:text-base"
     >
       <span className="absolute inset-0 origin-top-left scale-0 transform bg-[#F1EFE5] transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-100" />
-      <span className="relative z-10 font-medium">{text}</span>
-      <span className="relative z-10 text-lg transform transition-transform duration-300 rotate-180 group-hover:-translate-x-1">
+
+      {/* Added whitespace-nowrap to prevent text from breaking onto two lines */}
+      <span className="relative z-10 font-medium whitespace-nowrap">
+        {text}
+      </span>
+
+      {/* Added flex-shrink-0 to ensure the arrow keeps its shape */}
+      <span className="relative z-10 text-lg flex-shrink-0 transform transition-transform duration-300 rotate-180 group-hover:-translate-x-1">
         ↳
       </span>
     </a>

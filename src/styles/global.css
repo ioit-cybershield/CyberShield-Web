@@ -6,19 +6,13 @@
 @font-face {
   font-family: "Unytour";
   src: url("/fonts/hero/Unytour.otf") format("opentype");
-  font-display: swap;
+  font-display: block;
 }
-
 @font-face {
-  font-family: "Century Gothic";
-  src: url("/fonts/navbar/CenturyGothic.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Berlin Sans FB";
-  src: url("/fonts/navbar/Berlin.ttf") format("truetype");
-  font-display: swap;
+  font-family: "Galvanizer";
+  src: url("/fonts/navbar/Galvanizer.ttf") format("truetype");
+  font-display: block;
+  font-weight: bold;
 }
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -137,41 +131,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    scrollbar-width: none;
+    scrollbar-3dlight-color: aliceblue;
+  }
 
   .font-hero {
     font-family: "Unytour";
   }
-
   .font-nav {
-    font-family: "Century Gothic";
-  }
-
-  .font-nav-items {
-    font-family: "Berlin Sans FB";
-  }
-}
-
-/* Custom Utilities for Sunday Glassmorphism */
-@utility glass-panel {
-  @apply backdrop-blur-2xl bg-white/80 border border-black/10;
-}
-
-@theme {
-  --color-nav-bg: rgba(255, 255, 255, 0.7);
-  --color-nav-border: rgba(0, 0, 0, 0.08);
-  --color-nav-button-hover: rgba(0, 0, 0, 0.05);
-
-  --animate-blink: blink 1.5s infinite ease-in-out;
-
-  @keyframes blink {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.5;
-      transform: scale(0.85);
-    }
+    font-family: "Galvanizer";
   }
 }
