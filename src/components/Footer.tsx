@@ -66,18 +66,20 @@ const GridLink = ({ href, label }: GridLinkProps) => {
   return (
     <a
       href={href}
-      // REDUCED HEIGHT: Changed from h-80/h-96 to h-48 md:h-64
-      className="grid-link-item group relative block h-48 md:h-64 w-full overflow-hidden border-b border-neutral-800 md:border-b-0 md:border-r last:border-r-0 last:border-b-0"
+      // CHANGE 1: Reduced height from h-48 to h-32 for mobile, kept compact on desktop
+      className="grid-link-item group relative block h-32 md:h-64 w-full overflow-hidden border-b border-neutral-800 md:border-b-0 md:border-r last:border-r-0 last:border-b-0"
     >
       <div className="absolute inset-0 z-0 origin-left -translate-x-full bg-[#E2F949] transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:translate-x-0" />
 
-      <div className="relative z-10 flex h-full flex-col justify-end p-6 md:p-8 transition-colors duration-300 group-hover:text-black">
+      {/* CHANGE 2: Reduced padding from p-6 to p-4 for mobile */}
+      <div className="relative z-10 flex h-full flex-col justify-end p-4 md:p-8 transition-colors duration-300 group-hover:text-black">
         <div className="flex w-full items-end justify-between">
-          {/* REDUCED TEXT SIZE slightly to match new height */}
-          <span className="font-nav space-x-1 text-4xl md:text-5xl font-bold tracking-tighter leading-[0.9]">
+          {/* CHANGE 3: Reduced text size from text-4xl to text-3xl for mobile */}
+          <span className="font-nav space-x-1 text-3xl md:text-5xl font-bold tracking-tighter leading-[0.9]">
             {label}
           </span>
-          <ArrowIcon className="mb-1 h-8 w-8 md:h-10 md:w-10 transition-transform duration-300 group-hover:-translate-y-2 group-hover:translate-x-2" />
+          {/* CHANGE 4: Smaller arrow icon for mobile */}
+          <ArrowIcon className="mb-1 h-6 w-6 md:h-10 md:w-10 transition-transform duration-300 group-hover:-translate-y-2 group-hover:translate-x-2" />
         </div>
       </div>
     </a>
@@ -97,7 +99,7 @@ const Footer = () => {
           trigger: footerRef.current,
           start: "top 85%",
         },
-        y: 50, // Reduced animation distance
+        y: 30, // Reduced animation distance slightly
         opacity: 0,
         duration: 0.8,
         stagger: 0.1,
@@ -126,10 +128,7 @@ const Footer = () => {
       id="footer"
       className="font-nav relative z-10 w-full bg-[#111111] text-white"
     >
-      {/* WIDTH CONSTRAINT: 
-         Added max-w-7xl and mx-auto to center and constrain width 
-      */}
-      <div className="">
+      <div>
         {/* Navigation Grid */}
         <div className="grid w-full grid-cols-1 md:grid-cols-4 border-2 border-neutral-800">
           <GridLink href="/events" label="Events" />
@@ -139,8 +138,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="pt-8 md:pt-10 px-12">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center mb-12">
+        {/* CHANGE 5: Reduced padding from pt-8/px-12 to pt-6/px-6 for mobile */}
+        <div className="pt-6 px-6 md:pt-10 md:px-12">
+          {/* CHANGE 6: Reduced gap from gap-6 to gap-4, margin bottom from mb-12 to mb-8 */}
+          <div className="flex flex-col justify-between gap-4 md:gap-6 md:flex-row md:items-center mb-8 md:mb-12">
             <a
               href="/"
               className="text-lg text-[#E2F949] hover:underline hover:text-white transition-colors"
@@ -148,7 +149,7 @@ const Footer = () => {
               Home
             </a>
 
-            <div className="flex flex-wrap gap-x-8 gap-y-2 text-neutral-400 text-sm">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-neutral-400 text-sm">
               <a
                 href="/privacy-policy"
                 className="hover:text-white transition-colors"
@@ -167,16 +168,18 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* CHANGE 7: Reduced gap in bottom row from gap-8 to gap-6 */}
           <div
             ref={bottomRef}
-            className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row text-xs text-neutral-500 font-mono"
+            className="flex flex-col-reverse items-center justify-between gap-6 md:gap-8 md:flex-row text-xs text-neutral-500 font-mono pb-6 md:pb-10"
           >
             <div className="w-full md:w-1/3 text-center md:text-left">
               © 2026 CyberShield. All Rights Reserved.
             </div>
 
             <div className="w-full md:w-1/3 flex justify-center">
-              <div className="w-24 h-24">
+              {/* CHANGE 8: Reduced logo size slightly on mobile */}
+              <div className="w-16 h-16 md:w-32 md:h-32 mb-8">
                 <LogoIconWhite className="w-full h-full" />
               </div>
             </div>
