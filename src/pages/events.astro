@@ -6,6 +6,7 @@ import Preloader from "@/components/ui/preloader"
 import Layout from "@/layouts/Layout.astro"
 import LenisProvider from "@/providers/lenis-provider"
 import Hero from "@/components/events/Hero"
+import EventsComponent from "@/components/events/EventsComponent"
 import type { EventItem } from "@/types/events"
 import { format } from "date-fns"
 
@@ -45,8 +46,8 @@ const SAMPLE_EVENTS: EventItem[] = [
     <Preloader client:load />
     <LenisProvider client:load>
        <Navbar client:load/> 
-       <Hero events={SAMPLE_EVENTS} client:load/>
-       <!-- <Calendar client:load/> -->
+       <Hero  client:load/>
+       <EventsComponent events={SAMPLE_EVENTS} client:load/>
        <Footer client:load/>
     </LenisProvider>
 </Layout>

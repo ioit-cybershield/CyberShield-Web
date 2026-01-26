@@ -1,147 +1,126 @@
-// EventsHero.tsx
-import React, { useState, useRef, useMemo } from "react";
-import { format, parseISO } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
-import gsap from "gsap";
+import React, { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-import { type EventItem } from "@/types/events";
-import { CalendarShim } from "@/components/events/Calendar";
-import { DetailedEventCard } from "@/components/events/Card";
+// Register plugins once
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-interface EventsHeroProps {
-  events: EventItem[];
-}
+const Hero = () => {
+  const container = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
 
-const EventsHero: React.FC<EventsHeroProps> = ({ events = [] }) => {
-  // Default to today
-  const todayISO = format(new Date(), "yyyy-MM-dd");
-  const [selectedDate, setSelectedDate] = useState<string>(todayISO);
+  // Exact text split from your design
+  const copy = [
+    ["A", "good", "cocktail", "of"],
+    ["strategists,", "designers,"],
+    ["and", "engineers."],
+  ];
 
-  // Refs for animation context
-  const containerRef = useRef<HTMLDivElement>(null);
-  const detailsPanelRef = useRef<HTMLDivElement>(null);
-
-  // Filter events for the selected date
-  const selectedEvents = useMemo(() => {
-    return events.filter((e) => e.date === selectedDate);
-  }, [events, selectedDate]);
-
-  // --- GSAP Swipe Animation Logic ---
   useGSAP(
     () => {
-      if (!detailsPanelRef.current) return;
+      const tl = gsap.timeline();
+      const words = gsap.utils.toArray(".word-inner"); // Target the inner spans
 
-      // 1. Reset immediate state for entry
-      gsap.set(detailsPanelRef.current, { clearProps: "all" });
-
-      // 2. Animate In
-      gsap.fromTo(
-        detailsPanelRef.current,
-        { x: 50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+      // --------------------------------------------------------
+      // 1. INTRO ANIMATION (Load)
+      // --------------------------------------------------------
+      tl.fromTo(
+        words,
+        {
+          yPercent: 100, // Push text down (hidden by overflow)
+          rotate: 3, // Subtle rotation for editorial feel
+          opacity: 0,
+        },
+        {
+          yPercent: 0,
+          rotate: 0,
+          opacity: 1,
+          stagger: 0.05, // Fast, rhythmic stagger
+          duration: 1.2,
+          ease: "power3.out", // Smooth, non-bouncy deceleration
+          delay: 0.1,
+        },
+      ).fromTo(
+        imageRef.current,
+        { scale: 1.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out" },
+        "<0.2", // Overlap slightly with text
       );
+
+      // --------------------------------------------------------
+      // 2. SCROLL ANIMATION (Parallax & Fade)
+      // --------------------------------------------------------
+
+      // Parallax Image Effect
+      gsap.to(imageRef.current, {
+        yPercent: 20, // Move image down slightly while scrolling
+        ease: "none",
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // Text Exit Effect (Move up and Fade)
+      gsap.to(textRef.current, {
+        y: -100, // Move text upward
+        opacity: 0, // Fade out
+        ease: "power1.in",
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: "40% top", // Finish fading before section is halfway done
+          scrub: true,
+        },
+      });
     },
-    { dependencies: [selectedDate], scope: containerRef },
+    { scope: container },
   );
 
   return (
-    <section
-      ref={containerRef}
-      className="relative w-full min-h-screen bg-[#F8F8F8] font-['Manrope'] overflow-hidden flex flex-col lg:flex-row"
-    >
-      {/* ----------------------------------------------------
-        LEFT COLUMN: Navigation & Calendar
-        ----------------------------------------------------
-      */}
-      <div className="w-full lg:w-[420px] xl:w-[480px] flex-shrink-0 bg-white border-r border-zinc-200 z-20 flex flex-col h-auto lg:h-screen sticky top-0">
-        <div className="p-8 lg:p-10 flex flex-col h-full">
-          {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-['Syne'] font-bold text-black tracking-tight mb-2">
-              Events
-            </h1>
-            <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-              Select a date to view the detailed agenda.
-            </p>
-          </div>
-
-          {/* Calendar Integration */}
-          <div className="flex-1 flex flex-col justify-start">
-            <CalendarShim
-              events={events}
-              selectedDate={selectedDate}
-              onSelectDate={setSelectedDate}
-            />
-          </div>
-
-          {/* Footer / Meta (Desktop Only) */}
-          <div className="hidden lg:block mt-auto pt-6 border-t border-zinc-100 text-xs text-zinc-400">
-            <p>© 2026 Company Name. All times local.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* ----------------------------------------------------
-        RIGHT COLUMN: Dynamic Details Pane
-        ----------------------------------------------------
-      */}
-      <div className="flex-1 bg-[#F8F8F8] relative flex flex-col h-full lg:h-screen overflow-hidden">
-        {/* Background Graphic / Texture */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-b from-indigo-50/50 to-transparent rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/4" />
-
-        {/* Content Container with Animation Ref */}
+    <div ref={container} className="bg-white">
+      <section
+        ref={triggerRef}
+        className="relative min-h-[100vh] flex flex-col pt-32 md:pt-48 overflow-hidden"
+      >
+        {/* TEXT CONTAINER */}
         <div
-          ref={detailsPanelRef}
-          className="flex-1 overflow-y-auto p-6 lg:p-12 relative z-10"
+          ref={textRef}
+          className="container mx-auto px-6 md:px-12 z-10 mb-16 relative"
         >
-          {/* Date Heading for Context */}
-          <header className="mb-8 border-b border-zinc-200 pb-4 flex items-end justify-between">
-            <div>
-              <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-1">
-                Schedule For
-              </h2>
-              <p className="text-3xl lg:text-4xl font-['Syne'] font-bold text-zinc-900">
-                {format(parseISO(selectedDate), "EEEE, MMMM do")}
-              </p>
-            </div>
-            <div className="hidden md:block text-right">
-              <span className="text-xs font-semibold bg-black text-white px-3 py-1 rounded-full">
-                {selectedEvents.length} Event
-                {selectedEvents.length !== 1 && "s"}
-              </span>
-            </div>
-          </header>
-
-          {/* Dynamic Content Switcher */}
-          {selectedEvents.length === 0 ? (
-            // EMPTY STATE
-            <div className="h-[60vh] flex flex-col items-center justify-center text-zinc-400">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
-                <CalendarIcon className="w-6 h-6 opacity-30" />
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[1.1]">
+            {copy.map((line, i) => (
+              <div key={i} className="block overflow-hidden">
+                {/* 'overflow-hidden' on the line wrapper creates the mask effect */}
+                {line.map((word, j) => (
+                  <span key={j} className="inline-block relative mr-3 md:mr-5">
+                    <span className="word-inner inline-block will-change-transform">
+                      {word}
+                    </span>
+                  </span>
+                ))}
               </div>
-              <p className="text-lg font-medium text-zinc-500">
-                No events scheduled
-              </p>
-              <p className="text-sm">
-                Check back later or select another date.
-              </p>
-            </div>
-          ) : (
-            // EVENTS LIST
-            <div className="grid gap-6 max-w-3xl mx-auto">
-              {selectedEvents.map((event) => (
-                <DetailedEventCard key={event.id} event={event} />
-              ))}
-
-              {/* Extra spacing at bottom for scroll */}
-              <div className="h-20" />
-            </div>
-          )}
+            ))}
+          </h1>
         </div>
-      </div>
-    </section>
+
+        {/* IMAGE BANNER */}
+        <div className="w-full h-[60vh] md:h-[85vh] relative overflow-hidden mt-auto">
+          <img
+            ref={imageRef}
+            src="https://cdn.prod.website-files.com/679cb8f2875d404c7de22f8a/685938fdf2906528f616f394_Atlantiser_about_us_hero_a2.jpg"
+            alt="Team working in office"
+            className="absolute top-[-10%] left-0 w-full h-[120%] object-cover object-center"
+          />
+        </div>
+      </section>
+    </div>
   );
 };
 
-export default EventsHero;
+export default Hero;
