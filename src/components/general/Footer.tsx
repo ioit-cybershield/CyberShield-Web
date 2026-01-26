@@ -3,7 +3,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { LogoIconWhite } from "./ui/logo-text-copyright";
+import { LogoIconWhite } from "@/components/ui/logo-text-copyright";
 
 gsap.registerPlugin(ScrollTrigger);
 

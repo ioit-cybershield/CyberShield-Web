@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { NAV_ITEMS } from "@/content/nav";
-import { LogoBlack, LogoIcon } from "./ui/logo-text-copyright";
+import { LogoBlack, LogoIcon } from "@/components/ui/logo-text-copyright";
 import { useLenis } from "@/providers/lenis-provider";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
