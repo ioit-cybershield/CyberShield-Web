@@ -1,15 +1,52 @@
 ---
-import Calendar from "@/components/events/Calendar"
-import Footer from "@/components/Footer"
-import Navbar from "@/components/Navbar"
+// import Calendar from "@/components/events/Calendar"
+import Footer from "@/components/general/Footer"
+import Navbar from "@/components/general/Navbar"
+import Preloader from "@/components/ui/preloader"
 import Layout from "@/layouts/Layout.astro"
 import LenisProvider from "@/providers/lenis-provider"
+import Hero from "@/components/events/Hero"
+import type { EventItem } from "@/types/events"
+import { format } from "date-fns"
+
+const SAMPLE_EVENTS: EventItem[] = [
+    {
+      id: "1",
+      date: format(new Date(), "yyyy-MM-dd"), // Today
+      title: "Product Design Weekly",
+      time: "10:00 - 11:30 AM",
+      location: "Room 404",
+      summary: "Weekly sync with the design team to review high-fidelity prototypes.",
+      description: "We will be covering the new user onboarding flow and the settings page refactor. Please bring your laptops.",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600",
+      link: "#"
+    },
+    {
+      id: "2",
+      date: format(new Date(), "yyyy-MM-dd"), // Today
+      title: "Lunch & Learn: GSAP",
+      time: "12:00 - 1:00 PM",
+      location: "Cafeteria",
+      summary: "A quick introduction to GreenSock Animation Platform.",
+    },
+    {
+      id: "3",
+      date: "2026-02-14",
+      title: "Valentine's Gala",
+      time: "19:00 - 23:00",
+      location: "Grand Ballroom",
+      summary: "Annual company gala dinner.",
+      image: "https://images.unsplash.com/photo-1514525253440-b393452e8d26?auto=format&fit=crop&q=80&w=600"
+    }
+  ];
 ---
 
 <Layout>
+    <Preloader client:load />
     <LenisProvider client:load>
        <Navbar client:load/> 
-       <Calendar client:load/>
+       <Hero events={SAMPLE_EVENTS} client:load/>
+       <!-- <Calendar client:load/> -->
        <Footer client:load/>
     </LenisProvider>
 </Layout>

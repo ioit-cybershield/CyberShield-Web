@@ -1,21 +1,23 @@
 ---
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/general/Navbar';
 import Layout from '../layouts/Layout.astro';
-import HeroSection from '@/components/Hero';
-import AboutSection from '@/components/About';
+import HeroSection from '@/components/landing/Hero';
+import AboutSection from '@/components/landing/About';
 import LenisProvider from '@/providers/lenis-provider';
-import TimelineSpinner from '@/components/Timeline';
-import Gallery from "@/components/Gallery"
-import Footer from "@/components/Footer"
+import TimelineSpinner from '@/components/landing/Timeline';
+import Gallery from "@/components/landing/Gallery"
+import Footer from "@/components/general/Footer"
+import Preloader from '@/components/ui/preloader';
 ---
 
 <Layout>
+  <Preloader client:load />
   <LenisProvider client:load>
     <Navbar client:load/>
     <HeroSection client:load/>
-    <AboutSection client:load />
-    <Gallery client:load/>
-    <TimelineSpinner client:load />
-    <Footer client:load />
+    <AboutSection client:visible={{rootMargin: "200px"}} />
+    <Gallery client:visible={{rootMargin: "200px"}}/>
+    <TimelineSpinner client:visible={{rootMargin: "100px"}} />
+    <Footer client:visible />
   </LenisProvider>
 </Layout>
