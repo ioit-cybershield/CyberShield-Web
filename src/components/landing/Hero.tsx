@@ -24,7 +24,7 @@ export default function LandingPage() {
           y: "0%",
           duration: 1.5,
           stagger: 0.15,
-          delay: 0.2,
+          delay: 4,
         });
 
         // Bottom Text Reveal

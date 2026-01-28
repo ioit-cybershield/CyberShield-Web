@@ -190,7 +190,7 @@ export default function Preloader() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] bg-[#0c0c0c] text-white overflow-hidden"
+      className="fixed inset-0 z-9999 bg-[#0c0c0c] text-white overflow-hidden"
       style={{ visibility: "hidden" }} // Prevent FOUC
     >
       <div className="absolute inset-0 flex items-center justify-center">
