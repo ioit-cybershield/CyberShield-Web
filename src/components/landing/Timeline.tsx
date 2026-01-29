@@ -36,6 +36,7 @@ export default function TimelineSpinnerSection() {
           anticipatePin: 1,
           scroller: document.documentElement,
           invalidateOnRefresh: true,
+          refreshPriority: 1,
         },
       });
 
@@ -92,6 +93,9 @@ export default function TimelineSpinnerSection() {
       tl.to(spinnerRef.current, { opacity: 0.3, duration: 0.2 }, 0.8);
     }, section);
 
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
     return () => ctx.revert();
   }, []);
 

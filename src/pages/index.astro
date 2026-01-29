@@ -18,8 +18,8 @@ import CTA from '@/components/landing/CTA';
     <HeroSection client:idle={{timeout:300}}/>
     <AboutSection client:visible={{rootMargin: "200px"}} />
     <Gallery client:visible={{rootMargin: "200px"}}/>
-    <TimelineSpinner client:visible={{rootMargin: "100px"}} />
-    <CTA client:visible={{rootMargin: "200px"}}/>
+    <TimelineSpinner client:load />
+    <CTA client:visible={{rootMargin: "0px"}}/>
     <Footer client:visible={{rootMargin: "100px"}} />
   </LenisProvider>
 </Layout>
